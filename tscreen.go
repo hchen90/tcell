@@ -164,7 +164,11 @@ type tScreen struct {
 }
 
 func (t *tScreen) Init() error {
-	if e := t.initialize(); e != nil {
+	return t.initializeWithTty("")
+}
+
+func (t *tScreen) InitWithTty(dev string) error {
+	if e := t.initializeWithTty(dev); e != nil {
 		return e
 	}
 

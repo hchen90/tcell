@@ -20,6 +20,7 @@ package tcell
 type Screen interface {
 	// Init initializes the screen for use.
 	Init() error
+	InitWithTty(string) error
 
 	// Fini finalizes the screen also releasing resources.
 	Fini()

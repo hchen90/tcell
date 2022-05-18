@@ -102,6 +102,10 @@ type simscreen struct {
 }
 
 func (s *simscreen) Init() error {
+	return s.InitWithTty("")
+}
+
+func (s *simscreen) InitWithTty(dev string) error {
 	s.evch = make(chan Event, 10)
 	s.quit = make(chan struct{})
 	s.fillchar = 'X'

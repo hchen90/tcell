@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//go:build aix || darwin || dragonfly || freebsd || linux || netbsd || openbsd || solaris || zos
 // +build aix darwin dragonfly freebsd linux netbsd openbsd solaris zos
 
 package tcell
@@ -19,10 +20,25 @@ package tcell
 // initialize is used at application startup, and sets up the initial values
 // including file descriptors used for terminals and saving the initial state
 // so that it can be restored when the application terminates.
-func (t *tScreen) initialize() error {
+// func (t *tScreen) initialize() error {
+// 	var err error
+// 	if t.tty == nil {
+// 		t.tty, err = NewDevTty()
+// 		if err != nil {
+// 			return err
+// 		}
+// 	}
+// 	return nil
+// }
+
+func (t *tScreen) initializeWithTty(dev string) error {
 	var err error
 	if t.tty == nil {
-		t.tty, err = NewDevTty()
+		if len(dev) > 0 {
+			t.tty, err = NewDevTtyFromDev(dev)
+		} else {
+			t.tty, err = NewDevTty()
+		}
 		if err != nil {
 			return err
 		}
