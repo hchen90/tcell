@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 // Copyright 2021 The TCell Authors
@@ -42,7 +43,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gdamore/tcell/v2/terminfo"
+	"github.com/hchen90/tcell/v2/terminfo"
 )
 
 type termcap struct {
