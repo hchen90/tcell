@@ -179,6 +179,10 @@ func NewConsoleScreen() (Screen, error) {
 	return &cScreen{}, nil
 }
 
+func (s *cScreen) InitWithTty(string) error {
+	return s.Init()
+}
+
 func (s *cScreen) Init() error {
 	s.evch = make(chan Event, 10)
 	s.quit = make(chan struct{})

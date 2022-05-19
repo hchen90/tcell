@@ -23,3 +23,7 @@ package tcell
 func (t *tScreen) initialize() error {
 	return ErrNoScreen
 }
+
+func (t *tScreen) initializeWithTty(string) error {
+	return t.initialize()
+}
